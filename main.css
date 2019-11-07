@@ -1,0 +1,122 @@
+.circle {
+    font-size: 1em;
+    width: 26em;
+    height: 26em;
+    overflow: hidden;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    border-radius: 50%;
+    margin-left: -13em;
+    transition: all .3 ease;
+    transform: rotate(15deg);
+}
+
+.circle li {
+    position: absolute;
+    font-size: 1.5em;
+    width: 10em;
+    height: 10em;
+    transform-origin: 100% 100%;
+    overflow: hidden;
+    left: 50%;
+    top: 0%;
+    margin-top: -1.3em;
+    margin-left: -10em;
+    transition: border .3 ease;
+}
+
+.circle li a {
+    display: block;
+    font-size: 1.18em;
+    height: 14.5em;
+    width: 14.5em;
+    position: absolute;
+    bottom: -7.25em;
+    right: -7.25em;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+    background-color: hsla(56, 83%, 88%, 0.4);
+    padding-top: 1.8em;
+    text-align: center;
+    transform: skew(-60deg) rotate(-75deg) scale(1);
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.circle li a span {
+    font-size: 1.1em;
+    opacity: 0.7;
+}
+
+.circle li:first-child {
+    transform: rotate(0) skew(60deg);
+}
+
+.circle li:nth-child(2) {
+    transform: rotate(30deg) skew(60deg);
+}
+
+.circle li:nth-child(3) {
+    transform: rotate(60deg) skew(60deg);
+}
+
+.circle li:nth-child(4) {
+    transform: rotate(90deg) skew(60deg);
+}
+
+.circle li:nth-child(5) {
+    transform: rotate(120deg) skew(60deg);
+}
+
+.circle li:nth-child(6) {
+    transform: rotate(150deg) skew(60deg);
+}
+
+.circle li:nth-child(7) {
+    transform: rotate(180deg) skew(60deg);
+}
+
+.circle li:nth-child(8) {
+    transform: rotate(210deg) skew(60deg);
+}
+
+.circle li:nth-child(9) {
+    transform: rotate(240deg) skew(60deg);
+}
+
+.circle li:nth-child(10) {
+    transform: rotate(270deg) skew(60deg);
+}
+
+.circle li:nth-child(11) {
+    transform: rotate(300deg) skew(60deg);
+}
+
+.circle li:nth-child(12) {
+    transform: rotate(330deg) skew(60deg);
+}
+
+/* active style */
+.circle li.active a {
+    background-color: hsla(56, 85%, 80%, 1);
+}
+
+/* hover style */
+.circle li:not(.active) a:hover,
+.circle li:not(.active) a:active,
+.circle li:not(.active) a:focus {
+    background-color: hsla(56, 85%, 80%, 0.6);
+}
+.circle li:not(.active) a:focus {
+  position: fixed;
+}
+
+@media screen and (max-width:480px){
+  .circle{
+    font-size:.68em;
+  }
+  .circle li {
+    font-size:1.52em;
+  }
+}
