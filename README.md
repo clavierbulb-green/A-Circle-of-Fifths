@@ -8,8 +8,6 @@ Currently, features only a circle divided into 12 equally divided and selectable
     
 ## TODO
 ---
-+ Zooming in/out should not throw elements in circle off center.
-
 + Label each section with a key and its signature, possibly as part of a continuous staff that loops around the circle, which would require =>
  
 + 'Hollowing out' the center of the circle.
