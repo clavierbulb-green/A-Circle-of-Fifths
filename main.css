@@ -2,6 +2,9 @@
 
     --radius: 20vw; /* of whole circle */
 
+    --staff_thickness = calc(var(--radius) * 0.3);
+    --label_thickness = calc(var(--radius) * 0.15);
+
     /* TODO calculate radii using width of each ring in circle */
     --radius_major: calc(var(--radius) * 1);
     --radius_staff: calc(var(--radius) * (17 / 20));
@@ -23,22 +26,12 @@
     position: absolute; /*or fixed?*/
     border-radius: 50%;
     left: 50vw; /* move left edge of circle to center of screen */
-    transform: rotate(15deg);
+    transform: rotate(75deg);
     transition: all .3 ease;
     /*overflow: hidden;*/
 }
 
-#staff {
-    background-color: beige; /* PLACEHOLDER */
-    height: calc(var(--radius_staff) * 2);
-    width: calc(var(--radius_staff) * 2);
-
-    margin-left: calc(var(--radius_staff) * -1);
-    margin-top: calc(var(--radius) - var(--radius_staff));
-    z-index: 3;
-}
-
-#major {
+.major {
     position: absolute;
     background-color: gold; /* PLACEHOLDER */
     height: calc(var(--radius) * 2);
@@ -49,31 +42,41 @@
     z-index: 1;
 }
 
-#minor {
+.staff {
+    position: absolute;
+    background-color: #FFB; /* PLACEHOLDER */
+    height: calc(var(--radius_staff) * 2);
+    width: calc(var(--radius_staff) * 2);
+    margin-left: calc(var(--radius_staff) * -1);
+    margin-top: calc(var(--radius) - var(--radius_staff));
+    z-index: 2;
+}
+
+.minor {
     position: absolute;
     background-color: brown; /* PLACEHOLDER */
     height: calc(var(--radius_minor) * 2);
     width: calc(var(--radius_minor) * 2);
     margin-left: calc(var(--radius_minor) * -1);
     margin-top: calc(var(--radius) - var(--radius_minor));
-    z-index: 5;
+    z-index: 3;
 }
 
-#hole {
+.hole {
     position: absolute;
     background-color: white;
     height: calc(var(--radius_hole) * 2);
     width: calc(var(--radius_hole) * 2);
     margin-left: calc(var(--radius_hole) * -1);
     margin-top: calc(var(--radius) - var(--radius_hole));
-    z-index: 10;
+    z-index: 4;
 }
 
 /* size/placement of li and children should derive from parent circle */
 
 .circle li {
     position: absolute;
-    border: 0.5px solid green; /* PLACEHOLDER */
+    border: 0.5px dotted green; /* PLACEHOLDER */
     list-style: none;
 
     /* width/height = circle radius */
@@ -86,21 +89,34 @@
 }
 
 .circle li a {
-    border: 0.5px dotted purple; /* PLACEHOLDER */
     position: absolute;
-
-    /* width/height = containing li width/height = circle radius */
+    font-family: 'Rubik', sans-serif;
     width: 100%;
     height: 100%;
 
-    bottom: -25%; /* PLACEHOLDER */
-    right: -25%; /* PLACEHOLDER */
-
+    font-size: 1.8vw;
     display: block;
     text-align: center;
     text-decoration: none;
     transform: skew(-60deg) rotate(-75deg);
 }
+
+.minor li a {
+    border: 1px solid purple;
+    bottom: -50%; /* PLACEHOLDER */
+    right: -35%; /* PLACEHOLDER */
+    padding: 0.6em;
+    color: white;
+}
+
+.major li a {
+    border: 1px solid brown;
+    bottom: -45%; /* PLACEHOLDER */
+    right: -28%; /* PLACEHOLDER */
+    padding: 0.6em;
+    color: #240;
+}
+
 
 /* Each successive section of the circle is rotated clockwise relative to
  * the last section by the central angle (i.e. 30deg, or 360deg / x), where
