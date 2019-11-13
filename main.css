@@ -1,6 +1,12 @@
 :root {
-    --diameter: 35vw;;
-    --radius: calc(var(--diameter) / 2);
+
+    --radius: 20vw; /* of whole circle */
+
+    /* TODO calculate radii using width of each ring in circle */
+    --radius_major: calc(var(--radius) * 1);
+    --radius_staff: calc(var(--radius) * (17 / 20));
+    --radius_minor: calc(var(--radius) * (11 / 20));
+    --radius_hole: calc(var(--radius) * (8 / 20));
 
     /* variables cannot be passed in to functions (i.e. skew(), rotate()),
      * so the following do nothing for now */
@@ -9,33 +15,70 @@
     --skew-angle: calc(90deg - var(--central-angle))
 }
 
+.container {
+    margin: 100px;
+}
+
 .circle {
     position: absolute; /*or fixed?*/
-    border: 0.5px solid blue; /* PLACEHOLDER */
-    height: var(--diameter);
-    width: var(--diameter);
     border-radius: 50%;
-    /* move left edge of circle to center of screen */
-    left: 50vw;
-    /* move circle left by its radius to center the circle in the screen */
-    margin-left: calc(var(--radius) * -1);
-
-    margin-top: 10vw; /* PLACEHOLDER */
-    margin-bottom: 10vw; /* PLACEHOLDER */
+    left: 50vw; /* move left edge of circle to center of screen */
     transform: rotate(15deg);
-
     transition: all .3 ease;
     /*overflow: hidden;*/
-    /*z-index: 10*/
-
 }
+
+#staff {
+    background-color: beige; /* PLACEHOLDER */
+    height: calc(var(--radius_staff) * 2);
+    width: calc(var(--radius_staff) * 2);
+
+    margin-left: calc(var(--radius_staff) * -1);
+    margin-top: calc(var(--radius) - var(--radius_staff));
+    z-index: 3;
+}
+
+#major {
+    position: absolute;
+    background-color: gold; /* PLACEHOLDER */
+    height: calc(var(--radius) * 2);
+    width: calc(var(--radius) * 2);
+
+    /* move circle left by its radius to center the circle in the screen */
+    margin-left: calc(var(--radius) * -1);
+    z-index: 1;
+}
+
+#minor {
+    position: absolute;
+    background-color: brown; /* PLACEHOLDER */
+    height: calc(var(--radius_minor) * 2);
+    width: calc(var(--radius_minor) * 2);
+    margin-left: calc(var(--radius_minor) * -1);
+    margin-top: calc(var(--radius) - var(--radius_minor));
+    z-index: 5;
+}
+
+#hole {
+    position: absolute;
+    background-color: white;
+    height: calc(var(--radius_hole) * 2);
+    width: calc(var(--radius_hole) * 2);
+    margin-left: calc(var(--radius_hole) * -1);
+    margin-top: calc(var(--radius) - var(--radius_hole));
+    z-index: 10;
+}
+
+/* size/placement of li and children should derive from parent circle */
 
 .circle li {
     position: absolute;
     border: 0.5px solid green; /* PLACEHOLDER */
     list-style: none;
-    width: var(--radius);
-    height: var(--radius);
+
+    /* width/height = circle radius */
+    width: 50%; 
+    height: 50%;
 
     /* Sections are rotated around the bottom-right corner of the li
      * (i.e. the center of the circle). */
@@ -43,12 +86,16 @@
 }
 
 .circle li a {
-    border: 0.5px solid gold;
+    border: 0.5px dotted purple; /* PLACEHOLDER */
     position: absolute;
-    width: var(--radius);
-    height: var(--radius);
-    bottom: calc(var(--radius) / -4); /* PLACEHOLDER */
-    right: calc(var(--radius) / -4); /* PLACEHOLDER */
+
+    /* width/height = containing li width/height = circle radius */
+    width: 100%;
+    height: 100%;
+
+    bottom: -25%; /* PLACEHOLDER */
+    right: -25%; /* PLACEHOLDER */
+
     display: block;
     text-align: center;
     text-decoration: none;
@@ -60,7 +107,6 @@
  * x is the number of sections.
  * Each section is then skewed by 90deg - x, where x is the central angle.
  */
-    
 .circle li:first-child {
     transform: rotate(0) skew(60deg);
 }
@@ -97,5 +143,3 @@
 .circle li:nth-child(12){
     transform: rotate(330deg) skew(60deg);
 }
-
-
