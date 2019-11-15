@@ -1,5 +1,4 @@
 :root {
-
     --radius: 20vw; /* of whole circle */
 
     --staff_thickness = calc(var(--radius) * 0.3);
@@ -19,56 +18,56 @@
 }
 
 .container {
-    margin: 100px;
+    position: absolute;
+    width: calc(var(--radius) * 2);
+    height: calc(var(--radius) * 2);
+
+    /* place circle so center of circle = center of screen*/
+    left: 50vw;
+    margin-left: calc(var(--radius) * -1);
+
+    /* rotate so C major/a minor is at top */
+    transform: rotate(75deg);
 }
 
 .circle {
     position: absolute; /*or fixed?*/
     border-radius: 50%;
-    left: 50vw; /* move left edge of circle to center of screen */
-    transform: rotate(75deg);
     transition: all .3 ease;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .major {
-    position: absolute;
     background-color: gold; /* PLACEHOLDER */
-    height: calc(var(--radius) * 2);
-    width: calc(var(--radius) * 2);
-
-    /* move circle left by its radius to center the circle in the screen */
-    margin-left: calc(var(--radius) * -1);
+    height: calc(var(--radius_major) * 2);
+    width: calc(var(--radius_major) * 2);
     z-index: 1;
 }
 
 .staff {
-    position: absolute;
     background-color: #FFB; /* PLACEHOLDER */
     height: calc(var(--radius_staff) * 2);
     width: calc(var(--radius_staff) * 2);
-    margin-left: calc(var(--radius_staff) * -1);
-    margin-top: calc(var(--radius) - var(--radius_staff));
+    left: calc(var(--radius) - var(--radius_staff));
+    top: calc(var(--radius) - var(--radius_staff));
     z-index: 2;
 }
 
 .minor {
-    position: absolute;
     background-color: brown; /* PLACEHOLDER */
     height: calc(var(--radius_minor) * 2);
     width: calc(var(--radius_minor) * 2);
-    margin-left: calc(var(--radius_minor) * -1);
-    margin-top: calc(var(--radius) - var(--radius_minor));
+    left: calc(var(--radius) - var(--radius_minor));
+    top: calc(var(--radius) - var(--radius_minor));
     z-index: 3;
 }
 
 .hole {
-    position: absolute;
     background-color: white;
     height: calc(var(--radius_hole) * 2);
     width: calc(var(--radius_hole) * 2);
-    margin-left: calc(var(--radius_hole) * -1);
-    margin-top: calc(var(--radius) - var(--radius_hole));
+    left: calc(var(--radius) - var(--radius_hole));
+    top: calc(var(--radius) - var(--radius_hole));
     z-index: 4;
 }
 
@@ -102,7 +101,7 @@
 }
 
 .minor li a {
-    border: 1px solid purple;
+    /*border: 1px solid purple;*/
     bottom: -50%; /* PLACEHOLDER */
     right: -35%; /* PLACEHOLDER */
     padding: 0.6em;
@@ -110,7 +109,7 @@
 }
 
 .major li a {
-    border: 1px solid brown;
+    /*border: 1px solid brown;*/
     bottom: -45%; /* PLACEHOLDER */
     right: -28%; /* PLACEHOLDER */
     padding: 0.6em;
