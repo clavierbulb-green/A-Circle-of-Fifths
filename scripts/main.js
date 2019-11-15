@@ -28,28 +28,34 @@ for (let i = 0; i < 12; i++) {
 function rotate_circle(selected_label) {
     let selected_index = Number(selected_label.dataset.index);
     let local_angle = angle_mapping.get(selected_index);
-    let angle_to_turn = 360 - local_angle;
-    if (angle_to_turn > 180) {
-        angle_to_turn -= 360;
+
+    /* the circle should rotate no more than 180deg to center the 
+     * selected key, so -180 < turn_angle <= 180 */
+    let turn_angle = 360 - local_angle;
+    if (turn_angle > 180) {
+        turn_angle -= 360;
     }
-    else if(angle_to_turn <= -180) {
-        angle_to_turn += 360;
+    else if(turn_angle <= -180) {
+        turn_angle += 360;
     }
-    let new_angle = current_angle + angle_to_turn;
+
+    let new_angle = current_angle + turn_angle;
     current_angle = new_angle;
+
+    circle.style.transition = `transform ${Math.abs(turn_angle)/60}s ease-out`;
+    circle.style.transform = `rotate(${new_angle}deg)`;
 
     //update angle mapping
     angle_mapping.forEach((angle, index) => {
-        let new_angle = angle + angle_to_turn;
+        let new_angle = angle + turn_angle;
+        /* 0 <= local angles < 360 */
         if (new_angle >= 360) {
             new_angle -= 360;
         }
-        else if (new_angle <= -360) {
+        else if (new_angle < 0) {
             new_angle += 360;
         }
+        console.log('new_angle:', new_angle);
         angle_mapping.set(index, new_angle); 
     });
-
-    circle.style.transition = `transform ${Math.abs(angle_to_turn)/60}s ease-out`;
-    circle.style.transform = `rotate(${new_angle}deg)`;
 }
