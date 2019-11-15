@@ -38,7 +38,7 @@
     overflow: hidden;
 }
 
-.major {
+.major_keys {
     background-color: gold; /* PLACEHOLDER */
     height: calc(var(--radius_major) * 2);
     width: calc(var(--radius_major) * 2);
@@ -54,7 +54,7 @@
     z-index: 2;
 }
 
-.minor {
+.minor_keys {
     background-color: brown; /* PLACEHOLDER */
     height: calc(var(--radius_minor) * 2);
     width: calc(var(--radius_minor) * 2);
@@ -100,7 +100,7 @@
     transform: skew(-60deg) rotate(-75deg);
 }
 
-.minor li span {
+.minor_keys li span {
     border: 1px solid purple;
     bottom: -50%; /* PLACEHOLDER */
     right: -35%; /* PLACEHOLDER */
@@ -108,7 +108,7 @@
     color: white;
 }
 
-.major li span {
+.major_keys li span {
     border: 1px solid brown;
     bottom: -44%; /* PLACEHOLDER */
     right: -32%; /* PLACEHOLDER */

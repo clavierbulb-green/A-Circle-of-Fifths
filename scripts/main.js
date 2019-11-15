@@ -4,14 +4,22 @@ const circle = document.querySelector('.container');
 let current_angle = 75;
 
 
-let major_key_labels = Array.from(document.querySelectorAll('.major ul li'));
-let minor_key_labels = Array.from(document.querySelectorAll('.minor ul li'));
+let major_key_labels = Array.from(
+    document.querySelectorAll('.major_keys ul li')
+);
+let minor_key_labels = Array.from(
+    document.querySelectorAll('.minor_keys ul li')
+);
 
 major_key_labels.forEach(label => {
-    label.addEventListener("click", e => rotate_circle(e.target.parentElement))
+    label.addEventListener(
+        "click", e => rotate_circle(e.target.parentElement)
+    )
 });
 minor_key_labels.forEach(label => {
-    label.addEventListener("click", e => rotate_circle(e.target.parentElement))
+    label.addEventListener(
+        "click", e => rotate_circle(e.target.parentElement)
+    )
 });
 
 
@@ -55,7 +63,6 @@ function rotate_circle(selected_label) {
         else if (new_angle < 0) {
             new_angle += 360;
         }
-        console.log('new_angle:', new_angle);
         angle_mapping.set(index, new_angle); 
     });
 }
