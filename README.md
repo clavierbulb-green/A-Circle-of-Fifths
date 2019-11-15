@@ -4,15 +4,16 @@ A web page that features an interactive version of the [Circle of Fifths](https:
 
 ## Features
 ---
-Currently, features a circle with selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below)
+Currently, features a circle with selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below) which spins to center the circle at the selected key.
     
 ## TODO
 ---
 - [x] 'Hollowing out' the center of the circle.
 - [x] Add an 'inner ring' for minor keys.
-- [ ] Label each section with a key and its signature, possibly as part of a continuous staff that loops around the circle, which would require =>
+- [x] Have the circle spin to focus and center a selected key.
+- [x] Label each section with its corresponding key.
+- [ ] In the middle-most layer, add a continuous staff that loops around the circle, with corresponding key signatures for each key section.
 - [ ] Add a clef that stays stable while the circle spins.
-- [ ] Have the circle spin to focus and center a selected key.
 - [ ] Be able to select/move to a random key.
 
 
