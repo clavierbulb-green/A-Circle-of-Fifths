@@ -28,6 +28,7 @@
 
     /* rotate so C major/a minor is at top */
     transform: rotate(75deg);
+    transition: transform 3s ease;
 }
 
 .circle {
@@ -78,40 +79,39 @@
     border: 0.5px dotted green; /* PLACEHOLDER */
     list-style: none;
 
-    /* width/height = circle radius */
+    /* width and height = circle radius */
     width: 50%; 
     height: 50%;
 
     /* Sections are rotated around the bottom-right corner of the li
      * (i.e. the center of the circle). */
     transform-origin: 100% 100%;
+    overflow:hidden;
 }
 
-.circle li a {
+.circle li span {
     position: absolute;
     font-family: 'Rubik', sans-serif;
     width: 100%;
     height: 100%;
-
     font-size: 1.8vw;
     display: block;
     text-align: center;
-    text-decoration: none;
     transform: skew(-60deg) rotate(-75deg);
 }
 
-.minor li a {
-    /*border: 1px solid purple;*/
+.minor li span {
+    border: 1px solid purple;
     bottom: -50%; /* PLACEHOLDER */
     right: -35%; /* PLACEHOLDER */
     padding: 0.6em;
     color: white;
 }
 
-.major li a {
-    /*border: 1px solid brown;*/
-    bottom: -45%; /* PLACEHOLDER */
-    right: -28%; /* PLACEHOLDER */
+.major li span {
+    border: 1px solid brown;
+    bottom: -44%; /* PLACEHOLDER */
+    right: -32%; /* PLACEHOLDER */
     padding: 0.6em;
     color: #240;
 }
