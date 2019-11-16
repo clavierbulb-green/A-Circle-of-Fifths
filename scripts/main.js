@@ -10,6 +10,9 @@ let major_key_labels = Array.from(
 let minor_key_labels = Array.from(
     document.querySelectorAll('.minor_keys ul li')
 );
+let staff_sections = Array.from(
+    document.querySelectorAll('.staff ul li')
+);
 
 major_key_labels.forEach(label => {
     label.addEventListener(
@@ -18,6 +21,11 @@ major_key_labels.forEach(label => {
 });
 minor_key_labels.forEach(label => {
     label.addEventListener(
+        "click", e => rotate_circle(e.target.parentElement)
+    )
+});
+staff_sections.forEach(section => {
+    section.addEventListener(
         "click", e => rotate_circle(e.target.parentElement)
     )
 });
