@@ -18,6 +18,7 @@
 }
 
 .container {
+    box-sizing: border-box;
     position: absolute;
     width: calc(var(--radius) * 2);
     height: calc(var(--radius) * 2);
@@ -32,6 +33,7 @@
 }
 
 .circle {
+    box-sizing: border-box;
     position: absolute; /*or fixed?*/
     border-radius: 50%;
     transition: all .3 ease;
@@ -47,7 +49,7 @@
 
 
 .staff {
-    background-color: #FFB; /* PLACEHOLDER */
+    background-color: white; /* PLACEHOLDER */
     height: calc(var(--radius_staff) * 2);
     width: calc(var(--radius_staff) * 2);
     left: calc(var(--radius) - var(--radius_staff));
@@ -64,6 +66,7 @@
 }
 
 .staff_container img {
+    box-sizing: border-box;
     width: 95%;
     height: 95%;
     position: absolute;
@@ -93,6 +96,7 @@
 /* size/placement of li and children should derive from parent circle */
 
 .circle li {
+    box-sizing: border-box;
     position: absolute;
     list-style: none;
     /* width and height = circle radius */
@@ -106,6 +110,7 @@
 }
 
 .circle li span {
+    box-sizing: border-box;
     position: absolute;
     font-family: 'Rubik', sans-serif;
     width: 100%;
@@ -117,37 +122,31 @@
 }
 
 .minor_keys li {
-    border: 1px solid #700;
+    border: 3px solid white;
 }
 
 .minor_keys li span {
-    /*border: 1px solid purple;*/
-    bottom: -50%; /* PLACEHOLDER */
-    right: -35%; /* PLACEHOLDER */
+    bottom: -36%; /* PLACEHOLDER */
+    right: -22%; /* PLACEHOLDER */
     padding: 0.6em;
-    color: white;
 }
 
 .major_keys li {
-    border: 1px solid #CC1;
+    border: 3px solid white;
 }
 
 .major_keys li span {
-    /*border: 1px solid brown;*/
-    bottom: -44%; /* PLACEHOLDER */
-    right: -32%; /* PLACEHOLDER */
+    bottom: -36%; /* PLACEHOLDER */
+    right: -25%; /* PLACEHOLDER */
     padding: 0.6em;
-    color: #240;
 }
 
 .staff li {
-    border: 1px solid #ED5;
 }
 
 .staff li span {
-    /*border: 1px solid purple;*/
     padding: 0.6em;
-    bottom: -42%; /* PLACEHOLDER */
+    bottom: -30%; /* PLACEHOLDER */
     right: -30%; /* PLACEHOLDER */
 }
 
@@ -192,4 +191,59 @@
 }
 .circle li:nth-child(12){
     transform: rotate(330deg) skew(60deg);
+}
+
+
+/* Color each key according to the tonal color system of Scriain's 
+ * Clavier à lumières: 
+ * https://en.wikipedia.org/wiki/Clavier_%C3%A0_lumi%C3%A8res
+ */
+li[data-key='C'] {
+    background-color: #FF0800; /* 'intense red' */
+    color: #F2B5B0;
+}
+li[data-key='C#'] {
+    background-color: #66023C; /* 'violet or purple' (Tyrian Purple) */
+    color: #B284BE; /* African Violet */
+}
+li[data-key='D'] {
+    background-color: #FDEE00; /* 'yellow' */
+    color: #B8860B;
+}
+li[data-key='D#'] {
+    background-color: #EDCDC2; /* 'flesh, glint of steel */
+    color: #D7837F /* New York Pink */;
+}
+li[data-key='E'] {
+    background-color: #E1EBEE; /* 'moonshine or frost' (Marian blue) */
+    color: #0047AB;
+}
+li[data-key='F'] {
+    background-color: #A91101; /* 'deep red' (Turkey Red) */
+    color: #EC7D73;
+}
+li[data-key='F#'] {
+    /* 'bright blue or violet' (Vivid Sky Blue) */
+    background-color: 	#00CCFF;
+    color: #000f89; /* Phthalo Blue */
+}
+li[data-key='G'] {
+    background-color: #ED9121; /* 'orange' */
+    color: #A03702;
+}
+li[data-key='G#'] {
+    background-color: #DCD0FF; /* 'violet or lilac' (Pale Lilac) */
+    color: #856088; /* Chinese Violet */
+}
+li[data-key='A'] {
+    background-color: #138808; /* 'green' */
+    color: #013220;
+}
+li[data-key='A#'] {
+    background-color: #AA98A9; /* 'rose or steel' (Rose Quartz) */
+    color: #4E3644;
+}
+li[data-key='B'] {
+    background-color: #B9D9EB; /* 'blue or pearly blue' (Columbia Blue) */
+    color: #002147; /* Oxford Blue */
 }

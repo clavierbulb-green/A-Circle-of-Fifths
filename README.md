@@ -4,8 +4,7 @@ A web page that features an interactive version of the [Circle of Fifths](https:
 
 ## Features
 ---
-Currently, features a circle with a circular staff with the key-signatures of each key, and selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below) which spins to center the circle at the selected key.
-    
+Currently, features a circle with a circular staff with the key-signatures of each key, and selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below) which spins to center the circle at the selected key.  
 ## TODO
 ---
 - [x] 'Hollowing out' the center of the circle.
@@ -22,3 +21,4 @@ Currently, features a circle with a circular staff with the key-signatures of ea
 + [Circle of Fifths - Wikipedia](https://en.wikipedia.org/wiki/Circle_of_fifths)
 + [Building a Circular Navigation with CSS](https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/)
 
++ [Scriabin's Clavier à lumières](https://en.wikipedia.org/wiki/Clavier_%C3%A0_lumi%C3%A8res)
