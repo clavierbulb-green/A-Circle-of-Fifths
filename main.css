@@ -1,5 +1,5 @@
 :root {
-    --radius: 20vw; /* of whole circle */
+    --radius: 48vw; /* of whole circle */
 
     --staff_thickness = calc(var(--radius) * 0.3);
     --label_thickness = calc(var(--radius) * 0.15);
@@ -17,20 +17,23 @@
     --skew-angle: calc(90deg - var(--central-angle))
 }
 
+
 .container {
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     width: calc(var(--radius) * 2);
     height: calc(var(--radius) * 2);
 
     /* place circle so center of circle = center of screen*/
     left: 50vw;
+    top: calc(50vh - var(--radius));
     margin-left: calc(var(--radius) * -1);
 
     /* rotate so C major/a minor is at top */
     transform: rotate(75deg);
     transition: transform 3s ease;
 }
+
 
 .circle {
     box-sizing: border-box;
@@ -55,6 +58,7 @@
     left: calc(var(--radius) - var(--radius_staff));
     top: calc(var(--radius) - var(--radius_staff));
     z-index: 2;
+    opacity: 0.9;
 }
 
 .staff_container {
@@ -94,7 +98,6 @@
 }
 
 /* size/placement of li and children should derive from parent circle */
-
 .circle li {
     box-sizing: border-box;
     position: absolute;
@@ -115,20 +118,10 @@
     font-family: 'Rubik', sans-serif;
     width: 100%;
     height: 100%;
-    font-size: 1.8vw;
+    font-size: calc(var(--radius) / 8);
     display: block;
     text-align: center;
     transform: skew(-60deg) rotate(-75deg);
-}
-
-.minor_keys li {
-    border: 3px solid white;
-}
-
-.minor_keys li span {
-    bottom: -36%; /* PLACEHOLDER */
-    right: -22%; /* PLACEHOLDER */
-    padding: 0.6em;
 }
 
 .major_keys li {
@@ -136,18 +129,22 @@
 }
 
 .major_keys li span {
-    bottom: -36%; /* PLACEHOLDER */
+    bottom: -38%; /* PLACEHOLDER */
     right: -25%; /* PLACEHOLDER */
-    padding: 0.6em;
-}
-
-.staff li {
 }
 
 .staff li span {
-    padding: 0.6em;
     bottom: -30%; /* PLACEHOLDER */
     right: -30%; /* PLACEHOLDER */
+}
+
+.minor_keys li {
+    border: 3px solid white;
+}
+
+.minor_keys li span {
+    bottom: -38%; /* PLACEHOLDER */
+    right: -25%; /* PLACEHOLDER */
 }
 
 
@@ -199,7 +196,7 @@
  * https://en.wikipedia.org/wiki/Clavier_%C3%A0_lumi%C3%A8res
  */
 li[data-key='C'] {
-    background-color: #FF0800; /* 'intense red' */
+    background-color: rgba(255, 8, 0, 0.9); /* 'intense red' */
     color: #F2B5B0;
 }
 li[data-key='C#'] {
@@ -247,3 +244,34 @@ li[data-key='B'] {
     background-color: #B9D9EB; /* 'blue or pearly blue' (Columbia Blue) */
     color: #002147; /* Oxford Blue */
 }
+
+
+/********** MEDIA QUERIES **********/
+
+/* WIDTH > HEIGHT:
+/* Tie radius to view-height to keep the circle from overflowing the
+ * top of the screen */
+@media (min-aspect-ratio: 1/1) {
+    :root {
+        --radius: 48vh;
+    }
+}
+
+/* push circle down to semi-circle view */
+@media (min-aspect-ratio: 7/5) {
+    .container {
+        top: calc(110vh - var(--radius));
+    }
+    :root {
+        --radius: 48vw;
+    }
+}
+
+/* Tie radius to view-height to keep the circle from overflowing the
+ * top of the screen */
+@media (min-aspect-ratio: 2/1) {
+    :root {
+        --radius: 96vh;
+    }
+}
+

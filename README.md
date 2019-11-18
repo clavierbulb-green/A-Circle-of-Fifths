@@ -2,16 +2,20 @@
 
 A web page that features an interactive version of the [Circle of Fifths](https://en.wikipedia.org/wiki/Circle_of_fifths), written to have fun with music theory and practice CSS and Javascript (and perhaps Python, later on).
 
+---
+
+![Circle of Fifths Preview: Landscape (Semicircle)](images/preview/cof_landscape.png)
+
+
 ## Features
 ---
 Currently, features a circle with a circular staff with the key-signatures of each key, and selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below) which spins to center the circle at the selected key.  
 ## TODO
 ---
-- [x] 'Hollowing out' the center of the circle.
-- [x] Add an 'inner ring' for minor keys.
-- [x] Have the circle spin to focus and center a selected key.
-- [x] Label each section with its corresponding key.
-- [x] In the middle-most layer, add a continuous staff that loops around the circle, with corresponding key signatures for each key section.
+- [x] Change view between full circle and half-circle depending on screen dimensions (full circle for portrait orientation and half-circle for landscape).
+- [ ] Be able to spin circle by pressing arrow keys, by touch (on touchscreens), or by pressing arrow buttons.
+- [ ] Change the color of a sections of the staff to the color of a selected key
+- [ ] Style key label hover/select
 - [ ] Add a clef that stays stable while the circle spins.
 - [ ] Be able to select/move to a random key.
 
