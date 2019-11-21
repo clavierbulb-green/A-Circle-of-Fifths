@@ -129,7 +129,7 @@
 }
 
 .major_keys li span {
-    bottom: -38%; /* PLACEHOLDER */
+    bottom: -37%; /* PLACEHOLDER */
     right: -25%; /* PLACEHOLDER */
 }
 
@@ -143,8 +143,14 @@
 }
 
 .minor_keys li span {
-    bottom: -38%; /* PLACEHOLDER */
+    bottom: -37%; /* PLACEHOLDER */
     right: -25%; /* PLACEHOLDER */
+}
+
+.major_keys li span:hover,
+.minor_keys li span:hover {
+    /* darken on hover */
+    background-color: rgba(0,0,0,0.2);
 }
 
 
@@ -189,6 +195,7 @@
 .circle li:nth-child(12){
     transform: rotate(330deg) skew(60deg);
 }
+
 
 
 /* Color each key according to the tonal color system of Scriain's 
