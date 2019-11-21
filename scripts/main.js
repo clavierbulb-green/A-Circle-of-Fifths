@@ -1,4 +1,5 @@
 const circle = document.querySelector('.container');
+let can_move = true;
 
 /* angle in degrees by which circle is rotated; start at 75deg */
 let current_angle = 75;
@@ -16,17 +17,17 @@ let staff_sections = Array.from(
 
 major_key_labels.forEach(label => {
     label.addEventListener(
-        "click", e => rotate_circle(e.target.parentElement)
+        "click", e => rotate_to_key(e.target.parentElement)
     )
 });
 minor_key_labels.forEach(label => {
     label.addEventListener(
-        "click", e => rotate_circle(e.target.parentElement)
+        "click", e => rotate_to_key(e.target.parentElement)
     )
 });
 staff_sections.forEach(section => {
     section.addEventListener(
-        "click", e => rotate_circle(e.target.parentElement)
+        "click", e => rotate_to_key(e.target.parentElement)
     )
 });
 
@@ -41,7 +42,7 @@ for (let i = 0; i < 12; i++) {
     angle += 30;
 }
 
-function rotate_circle(selected_label) {
+function rotate_to_key(selected_label) {
     let selected_index = Number(selected_label.dataset.index);
     let local_angle = angle_mapping.get(selected_index);
 
@@ -55,13 +56,22 @@ function rotate_circle(selected_label) {
         turn_angle += 360;
     }
 
+    rotate_circle(turn_angle);
+}
+
+function rotate_circle(turn_angle) {
     let new_angle = current_angle + turn_angle;
     current_angle = new_angle;
 
     circle.style.transition = `transform ${Math.abs(turn_angle)/60}s ease-out`;
     circle.style.transform = `rotate(${new_angle}deg)`;
 
-    //update angle mapping
+    update_angle_mapping(turn_angle);
+}
+
+
+//update angle mapping
+function update_angle_mapping(turn_angle) {
     angle_mapping.forEach((angle, index) => {
         let new_angle = angle + turn_angle;
         /* 0 <= local angles < 360 */
@@ -73,4 +83,19 @@ function rotate_circle(selected_label) {
         }
         angle_mapping.set(index, new_angle); 
     });
+}
+
+document.onkeydown = e => {
+    if (!can_move) {
+        return false;
+    }
+    can_move = false;
+
+    if (e.code === 'ArrowRight') {
+        rotate_circle(30);
+    }
+    else if (e.code === 'ArrowLeft') {
+        rotate_circle(-30)
+    }
+    setTimeout(() => can_move = true, 200);
 }
