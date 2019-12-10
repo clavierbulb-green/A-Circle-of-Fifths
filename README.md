@@ -4,7 +4,7 @@ A web page that features an interactive version of the [Circle of Fifths](https:
 
 ---
 
-![Circle of Fifths Preview: Landscape (Semicircle)](images/preview/cof_landscape.png)
+![Circle of Fifths Preview: Landscape (Semicircle)](resources/images/preview/cof_landscape.png)
 
 
 ## Features
