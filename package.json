@@ -18,7 +18,6 @@
   "bugs": {
     "url": "https://github.com/clavierbulb-green/A-Circle-of-Fifths/issues"
   },
-  "homepage": "https://clavierbulb-green.github.io/A-Circle-of-Fifths/",
   "devDependencies": {
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
