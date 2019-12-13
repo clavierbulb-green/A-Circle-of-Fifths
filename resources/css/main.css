@@ -1,303 +1,252 @@
 @charset "UTF-8";
-:root {
-  --radius: 48vw;
-  /* of whole circle */
-  --staff_thickness: calc(var(--radius) * 0.3);
-  --label_thickness: calc(var(--radius) * 0.15);
-  /* TODO calculate radii using width of each ring in circle */
-  --radius_major: calc(var(--radius) * 1);
-  --radius_staff: calc(var(--radius) * (17 / 20));
-  --radius_minor: calc(var(--radius) * (11 / 20));
-  --radius_hole: calc(var(--radius) * (8 / 20));
+* {
+  box-sizing: border-box;
 }
 
-.container {
-  box-sizing: border-box;
-  position: fixed;
-  width: calc(var(--radius) * 2);
-  height: calc(var(--radius) * 2);
-  /* place circle so center of circle = center of screen*/
-  left: 50vw;
-  top: calc(50vh - var(--radius));
-  margin-left: calc(var(--radius) * -1);
-  /* rotate so C major/a minor is at top */
-  transform: rotate(75deg);
-  transition: transform 3s ease;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cof {
+  position: relative;
+  height: 95vmin;
+  width: 95vmin;
+  /* rotate so C major is at top of circle */
+  transform: rotate(-75deg);
+}
+
+/* || the hole in the middle of the circle */
+.cof::after {
+  content: "";
+  position: absolute;
+  height: 38%;
+  width: 38%;
+  top: 31%;
+  left: 31%;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .circle {
-  box-sizing: border-box;
   position: absolute;
-  /*or fixed?*/
-  border-radius: 50%;
-  transition: all 0.3 ease;
-  overflow: hidden;
+  list-style: none;
+  height: 0;
+  padding: 0;
+  /*clip-path: circle(35% at 50% 50%);*/
+  clip-path: circle(48% at 50% 50%);
 }
 
-.major_keys {
-  height: calc(var(--radius_major) * 2);
-  width: calc(var(--radius_major) * 2);
-  z-index: 1;
+.major {
+  /* padding trick for maintaining aspect ratio */
+  padding-top: 100%;
+  width: 100%;
 }
 
 .staff {
-  background-color: white;
-  height: calc(var(--radius_staff) * 2);
-  width: calc(var(--radius_staff) * 2);
-  left: calc(var(--radius) - var(--radius_staff));
-  top: calc(var(--radius) - var(--radius_staff));
-  z-index: 2;
-  opacity: 0.9;
+  /* padding trick for maintaining aspect ratio */
+  padding-top: 82%;
+  width: 82%;
+  top: 9%;
+  left: 9%;
 }
 
-.staff_container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.minor {
+  /* padding trick for maintaining aspect ratio */
+  padding-top: 56%;
+  width: 56%;
+  left: 22%;
+  top: 22%;
 }
 
-.staff_container img {
-  box-sizing: border-box;
-  width: 95%;
-  height: 95%;
-  position: absolute;
-  left: 4%;
-  top: 2.5%;
-  transform: rotate(-100deg);
-}
-
-.minor_keys {
-  height: calc(var(--radius_minor) * 2);
-  width: calc(var(--radius_minor) * 2);
-  left: calc(var(--radius) - var(--radius_minor));
-  top: calc(var(--radius) - var(--radius_minor));
-  z-index: 3;
-}
-
-.hole {
-  background-color: white;
-  height: calc(var(--radius_hole) * 2);
-  width: calc(var(--radius_hole) * 2);
-  left: calc(var(--radius) - var(--radius_hole));
-  top: calc(var(--radius) - var(--radius_hole));
-  z-index: 4;
-}
-
-/* size/placement of li and children should derive from parent circle */
 .circle li {
-  box-sizing: border-box;
   position: absolute;
-  list-style: none;
-  /* width and height = circle radius */
-  width: 50%;
-  height: 50%;
-  /* Sections are rotated around the bottom-right corner of the li
-   * (i.e. the center of the circle). */
-  transform-origin: 100% 100%;
-  overflow: hidden;
-}
-
-.circle li span {
-  box-sizing: border-box;
-  position: absolute;
-  font-family: "Rubik", sans-serif;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  font-size: calc(var(--radius) / 8);
-  display: block;
-  text-align: center;
-  transform: skew(-60deg) rotate(-75deg);
+  clip-path: polygon(50% 50%, 100% 50%, 93.30127% 25%);
 }
 
-.major_keys li {
-  border: 3px solid white;
+.major li {
+  background-color: #689F38;
 }
 
-.major_keys li span {
-  bottom: -37%;
-  right: -25%;
+.staff li {
+  background-color: #FFF9C4;
 }
 
-.staff li span {
-  bottom: -30%;
-  right: -30%;
+.minor li {
+  background-color: #FF3D00;
 }
 
-.minor_keys li {
-  border: 3px solid white;
-}
-
-.minor_keys li span {
-  bottom: -37%;
-  right: -25%;
-}
-
-.major_keys li span:hover,
-.minor_keys li span:hover {
-  /* darken on hover */
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* Each successive section of the circle is rotated clockwise relative to
- * the last section by the central angle (i.e. 30deg, or 360deg / x), where
- * x is the number of sections.
- * Each section is then skewed by 90deg - x, where x is the central angle.
- */
 .circle li:nth-child(1) {
-  transform: rotate(0deg) skew(60deg);
+  transform: rotate(0deg);
 }
 
 .circle li:nth-child(2) {
-  transform: rotate(30deg) skew(60deg);
+  transform: rotate(30deg);
 }
 
 .circle li:nth-child(3) {
-  transform: rotate(60deg) skew(60deg);
+  transform: rotate(60deg);
 }
 
 .circle li:nth-child(4) {
-  transform: rotate(90deg) skew(60deg);
+  transform: rotate(90deg);
 }
 
 .circle li:nth-child(5) {
-  transform: rotate(120deg) skew(60deg);
+  transform: rotate(120deg);
 }
 
 .circle li:nth-child(6) {
-  transform: rotate(150deg) skew(60deg);
+  transform: rotate(150deg);
 }
 
 .circle li:nth-child(7) {
-  transform: rotate(180deg) skew(60deg);
+  transform: rotate(180deg);
 }
 
 .circle li:nth-child(8) {
-  transform: rotate(210deg) skew(60deg);
+  transform: rotate(210deg);
 }
 
 .circle li:nth-child(9) {
-  transform: rotate(240deg) skew(60deg);
+  transform: rotate(240deg);
 }
 
 .circle li:nth-child(10) {
-  transform: rotate(270deg) skew(60deg);
+  transform: rotate(270deg);
 }
 
 .circle li:nth-child(11) {
-  transform: rotate(300deg) skew(60deg);
+  transform: rotate(300deg);
 }
 
 .circle li:nth-child(12) {
-  transform: rotate(330deg) skew(60deg);
+  transform: rotate(330deg);
 }
 
-/* Color each key according to the tonal color system of Scriain's 
- * Clavier à lumières: 
- * https://en.wikipedia.org/wiki/Clavier_%C3%A0_lumi%C3%A8res
- */
-li[data-key=C] {
-  background-color: rgba(255, 8, 0, 0.9);
-  /* 'intense red' */
-  color: #F2B5B0;
+.circle li:hover {
+  background-color: gold;
 }
 
-li[data-key="C#"] {
-  background-color: #66023C;
-  /* 'violet or purple' (Tyrian Purple) */
-  color: #B284BE;
-  /* African Violet */
+/* || labels for major and minor keys */
+.circle li::after {
+  position: absolute;
+  font-size: 5.5vmin;
+  color: white;
+  transform: rotate(75deg);
 }
 
-li[data-key=D] {
-  background-color: #FDEE00;
-  /* 'yellow' */
-  color: #B8860B;
+.major li::after {
+  right: 6%;
+  top: 36%;
 }
 
-li[data-key="D#"] {
-  background-color: #EDCDC2;
-  /* 'flesh, glint of steel */
-  color: #D7837F;
+.minor li::after {
+  right: 7%;
+  top: 35%;
 }
 
-li[data-key=E] {
-  background-color: #E1EBEE;
-  /* 'moonshine or frost' (Marian blue) */
-  color: #0047AB;
+.major li:nth-child(1)::after {
+  content: "C";
 }
 
-li[data-key=F] {
-  background-color: #A91101;
-  /* 'deep red' (Turkey Red) */
-  color: #EC7D73;
+.major li:nth-child(2)::after {
+  content: "G";
 }
 
-li[data-key="F#"] {
-  /* 'bright blue or violet' (Vivid Sky Blue) */
-  background-color: #00CCFF;
-  color: #000f89;
-  /* Phthalo Blue */
+.major li:nth-child(3)::after {
+  content: "D";
 }
 
-li[data-key=G] {
-  background-color: #ED9121;
-  /* 'orange' */
-  color: #A03702;
+.major li:nth-child(4)::after {
+  content: "A";
 }
 
-li[data-key="G#"] {
-  background-color: #DCD0FF;
-  /* 'violet or lilac' (Pale Lilac) */
-  color: #856088;
-  /* Chinese Violet */
+.major li:nth-child(5)::after {
+  content: "E";
 }
 
-li[data-key=A] {
-  background-color: #138808;
-  /* 'green' */
-  color: #013220;
+.major li:nth-child(6)::after {
+  content: "B";
 }
 
-li[data-key="A#"] {
-  background-color: #AA98A9;
-  /* 'rose or steel' (Rose Quartz) */
-  color: #4E3644;
+.major li:nth-child(7)::after {
+  content: "G♭";
 }
 
-li[data-key=B] {
-  background-color: #B9D9EB;
-  /* 'blue or pearly blue' (Columbia Blue) */
-  color: #002147;
-  /* Oxford Blue */
+.major li:nth-child(8)::after {
+  content: "D♭";
 }
 
-/********** MEDIA QUERIES **********/
-/* WIDTH > HEIGHT:
-/* Tie radius to view-height to keep the circle from overflowing the
- * top of the screen */
-@media (min-aspect-ratio: 1/1) {
-  :root {
-    --radius: 48vh;
-  }
+.major li:nth-child(9)::after {
+  content: "A♭";
 }
-/* push circle down to semi-circle view */
-@media (min-aspect-ratio: 7/5) {
-  .container {
-    top: calc(110vh - var(--radius));
-  }
 
-  :root {
-    --radius: 48vw;
-  }
+.major li:nth-child(10)::after {
+  content: "E♭";
 }
-/* Tie radius to view-height to keep the circle from overflowing the
- * top of the screen */
-@media (min-aspect-ratio: 2/1) {
-  :root {
-    --radius: 96vh;
-  }
+
+.major li:nth-child(11)::after {
+  content: "B♭";
+}
+
+.major li:nth-child(12)::after {
+  content: "F";
+}
+
+.minor li:nth-child(1)::after {
+  content: "a";
+}
+
+.minor li:nth-child(2)::after {
+  content: "e";
+}
+
+.minor li:nth-child(3)::after {
+  content: "b";
+}
+
+.minor li:nth-child(4)::after {
+  content: "f♯";
+}
+
+.minor li:nth-child(5)::after {
+  content: "c♯";
+}
+
+.minor li:nth-child(6)::after {
+  content: "g♯";
+}
+
+.minor li:nth-child(7)::after {
+  content: "e♭";
+}
+
+.minor li:nth-child(8)::after {
+  content: "b♭";
+}
+
+.minor li:nth-child(9)::after {
+  content: "f";
+}
+
+.minor li:nth-child(10)::after {
+  content: "c";
+}
+
+.minor li:nth-child(11)::after {
+  content: "g";
+}
+
+.minor li:nth-child(12)::after {
+  content: "d";
 }
 
 /*# sourceMappingURL=main.css.map */
