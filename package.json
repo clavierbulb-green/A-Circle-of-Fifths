@@ -1,0 +1,28 @@
+{
+  "name": "circle-of-fifths",
+  "description": "A web page that features an interactive version of the [Circle of Fifths](https://en.wikipedia.org/wiki/Circle_of_fifths), written to have fun with music theory and practice CSS and Javascript (and perhaps Python, later on).",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clavierbulb-green/A-Circle-of-Fifths.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clavierbulb-green/A-Circle-of-Fifths/issues"
+  },
+  "homepage": "https://clavierbulb-green.github.io/A-Circle-of-Fifths/",
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
