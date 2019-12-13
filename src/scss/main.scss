@@ -46,6 +46,7 @@ $central-angle: 360deg / $num-sections;
 }
 
 .staff {
+  background-color: white;
     height: calc(var(--radius_staff) * 2);
     width: calc(var(--radius_staff) * 2);
 
