@@ -1,4 +1,4 @@
-# A CIRCLE OF FIFTHS (WIP)
+# [A CIRCLE OF FIFTHS](https://clavierbulb-green.github.io/A-Circle-of-Fifths/) (WIP)
 
 A web page that features an interactive version of the [Circle of Fifths](https://en.wikipedia.org/wiki/Circle_of_fifths), written to have fun with music theory and practice CSS and Javascript (and perhaps Python, later on).
 
@@ -9,6 +9,8 @@ A web page that features an interactive version of the [Circle of Fifths](https:
 
 ## Features
 ---
+https://clavierbulb-green.github.io/A-Circle-of-Fifths/
+
 Currently, features a circle with a circular staff with the key-signatures of each key, and selectable labels for both major and minor keys, (drawn entirely in CSS! see [Resources](#Resources) below) which spins to center the circle at the selected key.  
 ## TODO
 ---
