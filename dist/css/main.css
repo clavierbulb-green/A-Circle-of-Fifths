@@ -1,0 +1,303 @@
+@charset "UTF-8";
+:root {
+  --radius: 48vw;
+  /* of whole circle */
+  --staff_thickness: calc(var(--radius) * 0.3);
+  --label_thickness: calc(var(--radius) * 0.15);
+  /* TODO calculate radii using width of each ring in circle */
+  --radius_major: calc(var(--radius) * 1);
+  --radius_staff: calc(var(--radius) * (17 / 20));
+  --radius_minor: calc(var(--radius) * (11 / 20));
+  --radius_hole: calc(var(--radius) * (8 / 20));
+}
+
+.container {
+  box-sizing: border-box;
+  position: fixed;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  /* place circle so center of circle = center of screen*/
+  left: 50vw;
+  top: calc(50vh - var(--radius));
+  margin-left: calc(var(--radius) * -1);
+  /* rotate so C major/a minor is at top */
+  transform: rotate(75deg);
+  transition: transform 3s ease;
+}
+
+.circle {
+  box-sizing: border-box;
+  position: absolute;
+  /*or fixed?*/
+  border-radius: 50%;
+  transition: all 0.3 ease;
+  overflow: hidden;
+}
+
+.major_keys {
+  height: calc(var(--radius_major) * 2);
+  width: calc(var(--radius_major) * 2);
+  z-index: 1;
+}
+
+.staff {
+  background-color: white;
+  height: calc(var(--radius_staff) * 2);
+  width: calc(var(--radius_staff) * 2);
+  left: calc(var(--radius) - var(--radius_staff));
+  top: calc(var(--radius) - var(--radius_staff));
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.staff_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staff_container img {
+  box-sizing: border-box;
+  width: 95%;
+  height: 95%;
+  position: absolute;
+  left: 4%;
+  top: 2.5%;
+  transform: rotate(-100deg);
+}
+
+.minor_keys {
+  height: calc(var(--radius_minor) * 2);
+  width: calc(var(--radius_minor) * 2);
+  left: calc(var(--radius) - var(--radius_minor));
+  top: calc(var(--radius) - var(--radius_minor));
+  z-index: 3;
+}
+
+.hole {
+  background-color: white;
+  height: calc(var(--radius_hole) * 2);
+  width: calc(var(--radius_hole) * 2);
+  left: calc(var(--radius) - var(--radius_hole));
+  top: calc(var(--radius) - var(--radius_hole));
+  z-index: 4;
+}
+
+/* size/placement of li and children should derive from parent circle */
+.circle li {
+  box-sizing: border-box;
+  position: absolute;
+  list-style: none;
+  /* width and height = circle radius */
+  width: 50%;
+  height: 50%;
+  /* Sections are rotated around the bottom-right corner of the li
+   * (i.e. the center of the circle). */
+  transform-origin: 100% 100%;
+  overflow: hidden;
+}
+
+.circle li span {
+  box-sizing: border-box;
+  position: absolute;
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  height: 100%;
+  font-size: calc(var(--radius) / 8);
+  display: block;
+  text-align: center;
+  transform: skew(-60deg) rotate(-75deg);
+}
+
+.major_keys li {
+  border: 3px solid white;
+}
+
+.major_keys li span {
+  bottom: -37%;
+  right: -25%;
+}
+
+.staff li span {
+  bottom: -30%;
+  right: -30%;
+}
+
+.minor_keys li {
+  border: 3px solid white;
+}
+
+.minor_keys li span {
+  bottom: -37%;
+  right: -25%;
+}
+
+.major_keys li span:hover,
+.minor_keys li span:hover {
+  /* darken on hover */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Each successive section of the circle is rotated clockwise relative to
+ * the last section by the central angle (i.e. 30deg, or 360deg / x), where
+ * x is the number of sections.
+ * Each section is then skewed by 90deg - x, where x is the central angle.
+ */
+.circle li:nth-child(1) {
+  transform: rotate(0deg) skew(60deg);
+}
+
+.circle li:nth-child(2) {
+  transform: rotate(30deg) skew(60deg);
+}
+
+.circle li:nth-child(3) {
+  transform: rotate(60deg) skew(60deg);
+}
+
+.circle li:nth-child(4) {
+  transform: rotate(90deg) skew(60deg);
+}
+
+.circle li:nth-child(5) {
+  transform: rotate(120deg) skew(60deg);
+}
+
+.circle li:nth-child(6) {
+  transform: rotate(150deg) skew(60deg);
+}
+
+.circle li:nth-child(7) {
+  transform: rotate(180deg) skew(60deg);
+}
+
+.circle li:nth-child(8) {
+  transform: rotate(210deg) skew(60deg);
+}
+
+.circle li:nth-child(9) {
+  transform: rotate(240deg) skew(60deg);
+}
+
+.circle li:nth-child(10) {
+  transform: rotate(270deg) skew(60deg);
+}
+
+.circle li:nth-child(11) {
+  transform: rotate(300deg) skew(60deg);
+}
+
+.circle li:nth-child(12) {
+  transform: rotate(330deg) skew(60deg);
+}
+
+/* Color each key according to the tonal color system of Scriain's 
+ * Clavier à lumières: 
+ * https://en.wikipedia.org/wiki/Clavier_%C3%A0_lumi%C3%A8res
+ */
+li[data-key=C] {
+  background-color: rgba(255, 8, 0, 0.9);
+  /* 'intense red' */
+  color: #F2B5B0;
+}
+
+li[data-key="C#"] {
+  background-color: #66023C;
+  /* 'violet or purple' (Tyrian Purple) */
+  color: #B284BE;
+  /* African Violet */
+}
+
+li[data-key=D] {
+  background-color: #FDEE00;
+  /* 'yellow' */
+  color: #B8860B;
+}
+
+li[data-key="D#"] {
+  background-color: #EDCDC2;
+  /* 'flesh, glint of steel */
+  color: #D7837F;
+}
+
+li[data-key=E] {
+  background-color: #E1EBEE;
+  /* 'moonshine or frost' (Marian blue) */
+  color: #0047AB;
+}
+
+li[data-key=F] {
+  background-color: #A91101;
+  /* 'deep red' (Turkey Red) */
+  color: #EC7D73;
+}
+
+li[data-key="F#"] {
+  /* 'bright blue or violet' (Vivid Sky Blue) */
+  background-color: #00CCFF;
+  color: #000f89;
+  /* Phthalo Blue */
+}
+
+li[data-key=G] {
+  background-color: #ED9121;
+  /* 'orange' */
+  color: #A03702;
+}
+
+li[data-key="G#"] {
+  background-color: #DCD0FF;
+  /* 'violet or lilac' (Pale Lilac) */
+  color: #856088;
+  /* Chinese Violet */
+}
+
+li[data-key=A] {
+  background-color: #138808;
+  /* 'green' */
+  color: #013220;
+}
+
+li[data-key="A#"] {
+  background-color: #AA98A9;
+  /* 'rose or steel' (Rose Quartz) */
+  color: #4E3644;
+}
+
+li[data-key=B] {
+  background-color: #B9D9EB;
+  /* 'blue or pearly blue' (Columbia Blue) */
+  color: #002147;
+  /* Oxford Blue */
+}
+
+/********** MEDIA QUERIES **********/
+/* WIDTH > HEIGHT:
+/* Tie radius to view-height to keep the circle from overflowing the
+ * top of the screen */
+@media (min-aspect-ratio: 1/1) {
+  :root {
+    --radius: 48vh;
+  }
+}
+/* push circle down to semi-circle view */
+@media (min-aspect-ratio: 7/5) {
+  .container {
+    top: calc(110vh - var(--radius));
+  }
+
+  :root {
+    --radius: 48vw;
+  }
+}
+/* Tie radius to view-height to keep the circle from overflowing the
+ * top of the screen */
+@media (min-aspect-ratio: 2/1) {
+  :root {
+    --radius: 96vh;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
