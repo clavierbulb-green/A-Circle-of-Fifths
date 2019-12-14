@@ -43,7 +43,7 @@ $start-angle: -75deg;
 
 @keyframes rotate {
   to {
-    /*transform: rotate($start-angle - 360deg);*/
+   /*transform: rotate($start-angle - 360deg);*/
   }
 }
 
@@ -52,7 +52,7 @@ $start-angle: -75deg;
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: pink;
+  /*background-color: pink;*/
   opacity: 0.3;
 }
 
@@ -104,6 +104,22 @@ $start-angle: -75deg;
 
   top: 9%;
   left: 9%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.staff::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+
+  background-image: url("../images/circular_staff_treble.png");
+  background-position: 4vmin 4.5vmin;
+  background-size: 90%;
+  background-repeat: no-repeat;
+
+  transform: rotate(57deg);
 }
 .minor {
   /* padding trick for maintaining aspect ratio */
@@ -141,9 +157,6 @@ $start-angle: -75deg;
 .major li {
   background-color: #689F38;
 }
-.staff li {
-  background-color: #FFF9C4;
-}
 .minor li {
   background-color: #FF3D00;
 }
@@ -155,7 +168,7 @@ $start-angle: -75deg;
 }
 
 .circle li:hover {
-  background-color: gold;
+  background-color: rgba(250, 230, 95, 0.6);
 }
 
 /* || labels for major and minor keys */
