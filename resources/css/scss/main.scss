@@ -22,6 +22,8 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
   overflow: hidden;
 }
 
+$start-angle: -75deg;
+
 .cof {
   position: relative;
 
@@ -29,7 +31,29 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
   width: 95vmin;
 
   /* rotate so C major is at top of circle */
-  transform: rotate(-75deg);
+  transform: rotate($start-angle);
+
+  animation-name: rotate;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  to {
+    /*transform: rotate($start-angle - 360deg);*/
+  }
+}
+
+.cof::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: pink;
+  opacity: 0.3;
 }
 
 /* || the hole in the middle of the circle */
@@ -58,6 +82,21 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
   padding-top: 100%;
   width: 100%;
 }
+
+/* || label "MAJOR" for major keys */
+.major::after {
+  content: "MAJOR";
+  position: absolute;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 6vmin;
+  letter-spacing: 0.5rem;
+  top: 48%;
+  left: 78%;
+  width: 30%;
+  text-align: center;
+  transform: rotate(90deg);
+}
+
 .staff {
   /* padding trick for maintaining aspect ratio */
   padding-top: 82%;
@@ -73,6 +112,21 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
 
   left: 22%;
   top: 22%;
+
+}
+
+/* || label "MINOR" for major keys */
+.minor::after {
+  content: "MINOR";
+  position: absolute;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 5vmin;
+  letter-spacing: 0.4rem;
+  top: 39%;
+  left: 73%;
+  width: 30%;
+  text-align: center;
+  transform: rotate(86deg);
 }
 
 .circle li {
@@ -107,17 +161,21 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
 /* || labels for major and minor keys */
 .circle li::after {
     position: absolute;
+    width: 10vmin;
+    text-align: center;
     font-size: 5.5vmin;
     color: white;
     transform: rotate(75deg);
+
+    text-shadow: 0.6vmin 0.6vmin 1vmin black;
 }
 
 .major li::after {
-  right: 6%;
+  right: 3%;
   top: 36%;
 }
 .minor li::after {
-  right: 7%;
+  right: 3%;
   top: 35%;
 }
 
