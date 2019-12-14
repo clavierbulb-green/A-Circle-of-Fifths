@@ -1,5 +1,6 @@
-
+/* || variables */
 $central-angle: 30deg;
+$start-angle: -75deg;
 
 $flat: "\266D";
 $sharp: "\266F";
@@ -22,7 +23,6 @@ $minor-keys: (1: "a", 2: "e", 3: "b", 4: "f#{$sharp}", 5: "c#{$sharp}", 6: "g#{$
   overflow: hidden;
 }
 
-$start-angle: -75deg;
 
 .cof {
   position: relative;
@@ -81,6 +81,7 @@ $start-angle: -75deg;
   /* padding trick for maintaining aspect ratio */
   padding-top: 100%;
   width: 100%;
+  background-color: #689F38;
 }
 
 /* || label "MAJOR" for major keys */
@@ -121,6 +122,7 @@ $start-angle: -75deg;
 
   transform: rotate(57deg);
 }
+
 .minor {
   /* padding trick for maintaining aspect ratio */
   padding-top: 56%;
@@ -129,6 +131,7 @@ $start-angle: -75deg;
   left: 22%;
   top: 22%;
 
+  background-color: #FF3D00;
 }
 
 /* || label "MINOR" for major keys */
@@ -152,13 +155,9 @@ $start-angle: -75deg;
   width: 100%;
   height: 100%;
   clip-path: polygon(50% 50%, 100% 50%, 93.30127% 25%);
-}
 
-.major li {
-  background-color: #689F38;
-}
-.minor li {
-  background-color: #FF3D00;
+  z-index: 5;
+  background-color: rgba(255,255,255,0);
 }
 
 @for $i from 1 through 12 {
