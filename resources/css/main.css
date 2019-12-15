@@ -103,6 +103,19 @@
   transform: rotate(57deg);
 }
 
+.staff::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-image: url("../images/treble_clef.png");
+  background-size: 4.9%;
+  background-position: 44vmin 19.5vmin;
+  background-repeat: no-repeat;
+  transform: rotate(70deg);
+}
+
 .minor {
   /* padding trick for maintaining aspect ratio */
   padding-top: 56%;
