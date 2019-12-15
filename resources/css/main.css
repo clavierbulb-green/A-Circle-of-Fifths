@@ -14,8 +14,8 @@
 
 .cof {
   position: relative;
-  height: 95vmin;
-  width: 95vmin;
+  height: 100vmin;
+  width: 100vmin;
   /* rotate so C major is at top of circle */
   transform: rotate(-75deg);
   animation-name: rotate;
@@ -71,14 +71,14 @@
 .major::after {
   content: "MAJOR";
   position: absolute;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 245, 156, 0.6);
   font-size: 6vmin;
-  letter-spacing: 0.5rem;
-  top: 48%;
-  left: 78%;
+  letter-spacing: calc(0.25rem + 0.8vmin);
+  top: 52%;
+  left: 77%;
   width: 30%;
   text-align: center;
-  transform: rotate(90deg);
+  transform: rotate(95deg);
 }
 
 .staff {
@@ -116,14 +116,14 @@
 .minor::after {
   content: "MINOR";
   position: absolute;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 5vmin;
-  letter-spacing: 0.4rem;
-  top: 39%;
-  left: 73%;
+  color: rgba(255, 245, 156, 0.6);
+  font-size: 6vmin;
+  letter-spacing: calc(0.18rem + 1.2vmin);
+  top: 17%;
+  left: 61%;
   width: 30%;
   text-align: center;
-  transform: rotate(86deg);
+  transform: rotate(55deg);
 }
 
 .circle li {
@@ -194,20 +194,20 @@
   position: absolute;
   width: 10vmin;
   text-align: center;
-  font-size: 5.5vmin;
+  font-size: 7.5vmin;
   color: white;
   transform: rotate(75deg);
-  text-shadow: 0.6vmin 0.6vmin 1vmin black;
+  text-shadow: 0.4vmin 0.4vmin 1vmin black;
 }
 
 .major li::after {
   right: 3%;
-  top: 36%;
+  top: 35%;
 }
 
 .minor li::after {
-  right: 3%;
-  top: 35%;
+  right: 2%;
+  top: 33%;
 }
 
 .major li:nth-child(1)::after {
